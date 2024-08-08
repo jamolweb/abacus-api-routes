@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>API Documentation</title>
+		<link rel="stylesheet" href="styles.css" />
+		<style>
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				background-color: #f9f9f9;
+				margin: 0;
+				padding: 0;
+			}
+
+			header {
+				background-color: #007bff;
+				color: #000;
+				padding: 20px 0;
+				text-align: center;
+			}
+
+			header h1 {
+				margin: 0;
+			}
+
+			.container {
+				width: 90%;
+				max-width: 1200px;
+				margin: 20px auto;
+				padding: 20px;
+				background-color: #fff;
+				border-radius: 8px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			}
+
+			h2 {
+				border-bottom: 2px solid #007bff;
+				padding-bottom: 10px;
+				margin-bottom: 20px;
+				color: #333;
+			}
+
+			h3 {
+				color: #007bff;
+				margin-top: 0;
+			}
+
+			.route {
+				margin-bottom: 30px;
+				padding: 15px;
+				background-color: #f4f4f4;
+				border-radius: 5px;
+			}
+
+			p {
+				margin: 10px 0;
+			}
+
+			h4 {
+				margin-top: 20px;
+				color: #555;
+			}
+
+			.response-code {
+				background-color: #e9ecef;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+				padding: 15px;
+				margin-top: 10px;
+			}
+
+			.response-code h5 {
+				margin-top: 0;
+				color: #555;
+			}
+
+			pre {
+				margin: 0;
+				overflow-x: auto;
+				background: #f8f9fa;
+				padding: 10px;
+				border-radius: 4px;
+			}
+
+			code {
+				font-size: 14px;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<h1>API Documentation</h1>
+			</div>
+		</header>
+
+		<main class="container">
+			<section class="endpoint">
+				<h2>1. Messages API</h2>
+
+				<div class="route">
+					<h3>GET /api/messages</h3>
+					<p><strong>Description:</strong> Get all messages</p>
+					<p><strong>Headers:</strong> Authorization: Bearer &lt;token&gt;</p>
+					<h4>Responses:</h4>
+					<div class="response-code">
+						<h5>200 OK</h5>
+						<pre><code>[ { "id": "message_id", "fullname": "John Doe", "email": "john.doe@example.com", "subject": "Subject", "message": "Message content", "ipAddress": "IP_ADDRESS", "createdAt": "timestamp" }, ... ]</code></pre>
+					</div>
+					<div class="response-code">
+						<h5>401 Unauthorized</h5>
+						<pre><code>{ "error": "Unauthorized" }</code></pre>
+					</div>
+				</div>
+
+				<div class="route">
+					<h3>GET /api/messages/:id</h3>
+					<p><strong>Description:</strong> Get a message by ID</p>
+					<p><strong>Headers:</strong> Authorization: Bearer &lt;token&gt;</p>
+					<h4>Responses:</h4>
+					<div class="response-code">
+						<h5>200 OK</h5>
+						<pre><code>{ "id": "message_id", "fullname": "John Doe", "email": "john.doe@example.com", "subject": "Subject", "message": "Message content", "ipAddress": "IP_ADDRESS", "createdAt": "timestamp" }</code></pre>
+					</div>
+					<div class="response-code">
+						<h5>404 Not Found</h5>
+						<pre><code>{ "error": "Xabar topilmadi" }</code></pre>
+					</div>
+					<div class="response-code">
+						<h5>401 Unauthorized</h5>
+						<pre><code>{ "error": "Unauthorized" }</code></pre>
+					</div>
+				</div>
+
+				<div class="route">
+					<h3>DELETE /api/messages/:id</h3>
+					<p><strong>Description:</strong> Delete a message by ID</p>
+					<p><strong>Headers:</strong> Authorization: Bearer &lt;token&gt;</p>
+					<h4>Responses:</h4>
+					<div class="response-code">
+						<h5>200 OK</h5>
+						<pre><code>{ "message": "Message successfully deleted" }</code></pre>
+					</div>
+					<div class="response-code">
+						<h5>404 Not Found</h5>
+						<pre><code>{ "error": "Xabar topilmadi" }</code></pre>
+					</div>
+					<div class="response-code">
+						<h5>401 Unauthorized</h5>
+						<pre><code>{ "error": "Unauthorized" }</code></pre>
+					</div>
+				</div>
+			</section>
+
+			<section class="endpoint">
+				<h2>2. Telegram Messages API</h2>
+
+				<div class="route">
+					<h3>GET /api/telegram</h3>
+					<p><strong>Description:</strong> Get all telegram messages</p>
+					<p><strong>Headers:</strong> Authorization: Bearer &lt;token&gt;</p>
+					<h4>Responses:</h4>
+					<div class="response-code">
+						<h5>200 OK</h5>
+						<pre><code>[ { "id": "telegram_message_id", "field1": "value1", "field2": "value2", "createdAt": "timestamp" }, ... ]</code></pre>
+					</div>
+					<div class="response-code">
+						<h5>401 Unauthorized</h5>
+						<pre><code>{ "error": "Unauthorized" }</code></pre>
+					</div>
+				</div>
+
+				<div class="route">
+					<h3>GET /api/telegram/:id</h3>
+					<p><strong>Description:</strong> Get a telegram message by ID</p>
+					<p><strong>Headers:</strong> Authorization: Bearer &lt;token&gt;</p>
+					<h4>Responses:</h4>
+					<div class="response-code">
+						<h5>200 OK</h5>
+						<pre><code>{ "id": "telegram_message_id", "field1": "value1", "field2": "value2", "createdAt": "timestamp" }</code></pre>
+					</div>
+					<div class="response-code">
+						<h5>404 Not Found</h5>
+						<pre><code>{ "error": "Xabar topilmadi" }</code></pre>
+					</div>
+					<div class="response-code">
+						<h5>401 Unauthorized</h5>
+						<pre><code>{ "error": "Unauthorized" }</code></pre>
+					</div>
+				</div>
+
+				<div class="route">
+					<h3>DELETE /api/telegram/:id</h3>
+					<p><strong>Description:</strong> Delete a telegram message by ID</p>
+					<p><strong>Headers:</strong> Authorization: Bearer &lt;token&gt;</p>
+					<h4>Responses:</h4>
+					<div class="response-code">
+						<h5>200 OK</h5>
+						<pre><code>{ "message": "Message deleted successfully" }</code></pre>
+					</div>
+					<div class="response-code">
+						<h5>404 Not Found</h5>
+						<pre><code>{ "error": "Xabar topilmadi" }</code></pre>
+					</div>
+					<div class="response-code">
+						<h5>401 Unauthorized</h5>
+						<pre><code>{ "error": "Unauthorized" }</code></pre>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
